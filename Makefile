@@ -1,5 +1,5 @@
 CXX         = clang++
-CXXFLAGS    = -std=c++11 -Wall -Wextra -Wparentheses $(LIBARYFLAGS)
+CXXFLAGS    = -std=c++1z -Wall -Wextra -Wparentheses $(LIBARYFLAGS)
 HPPS        = $(wildcard *.hpp)
 OBJECTS     = $(HPPS:.hpp=.o)
 
