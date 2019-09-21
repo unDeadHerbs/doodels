@@ -3,35 +3,27 @@
 
 #include <stdio.h>
 #include <memory>
-using std::shared_ptr;
+using std::unique_ptr;
 
-template <typename T>
-class SingletonManager{
- private:
-  static shared_ptr<T> _singleton;
- public:
-  SingletonManager(){_singleton=T::Get();}
-  //~SingletonManager(){if(_singleton) delete _singleton;}
-  //void SetSingleton(T *s){_singleton=s;}
-};
+#include <stdlib.h>
 
-class sing{
+class Singleton{
 protected:
-  sing(sing const&)=delete;
-  sing operator=(sing const&)=delete;
-  sing(){printf("sing constructor\n");}
-  static shared_ptr<sing> m_pInstance;
+  Singleton(Singleton const&)=delete;
+  Singleton operator=(Singleton const&)=delete;
+  Singleton(){printf("Singleton constructor\n");}
+  static unique_ptr<Singleton> m_pInstance;
 public:
-  ~sing(){printf("sing destructor\n");}
-  static shared_ptr<sing> Get(){
+  ~Singleton(){printf("Singleton destructor\n");}
+  static Singleton* Get(){
     if(!m_pInstance)
-      m_pInstance = shared_ptr<sing>(new sing);
-    return m_pInstance;
+      m_pInstance = unique_ptr<Singleton>(new Singleton);
+    return m_pInstance.get();
   }
 };
 
-//static SingletonManager<sing> SingMan;
-static auto SingMan=sing::Get();
+//static SingletonManager<Singleton> SingletonMan;
+
 
 #endif
 

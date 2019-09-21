@@ -1,4 +1,6 @@
 #include "sing.hpp"
 
-shared_ptr<sing> sing::m_pInstance = NULL;
-// template <> shared_ptr<sing> SingletonManager<sing>::_singleton = {};
+auto init_copy = Singleton::Get();
+unique_ptr<Singleton> Singleton::m_pInstance = NULL;
+// template <> shared_ptr<Singleton> SingletonManager<Singleton>::_singleton =
+// {};
