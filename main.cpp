@@ -6,6 +6,8 @@ using std::endl;
 
 int main() {
   cout << "start main" << endl;
-  // sleep(1);
+  Singleton::Get();
+  sleep(1);
+  Singleton::Get();
   cout << "end main" << endl;
 }
